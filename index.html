@@ -4,36 +4,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Focus Refund</title>
-  
-  <!-- This loads Tailwind so we can use colors like bg-blue-600 -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-gray-900 text-white">
   
-  <!-- This centers everything on screen. Harry #44 Flexbox -->
-  <div class="min-h-screen flex items-center justify-center">
-    
-    <!-- This holds all your content -->
-    <div class="text-center p-6">
+  <div class="min-h-screen flex flex-col items-center justify-center py-20 px-4">
+    <div class="w-full max-w-6xl p-6">
       
-      <!-- Big heading: text-5xl = really big text -->
-      <h1 class="text-5xl font-bold mb-4">
-        Stop Doomscrolling
-      </h1>
-      
-      <!-- Small text: text-xl = medium text, text-gray-400 = light gray -->
-      <p class="text-xl text-gray-400 mb-8">
-        Get paid to stay focused
-      </p>
-      
-      <!-- Button: bg-blue-600 = blue color, px-6 = padding left/right, py-3 = padding top/bottom -->
-      <button class="bg-green-600 px-6 py-3 rounded-lg text-lg font-semibold">
-        Start Now
-      </button>
-      
+      <!-- Hero Section -->
+      <div class="text-center mb-16">
+        <h1 class="text-5xl font-bold mb-4">Stop Doomscrolling</h1>
+        <p class="text-xl text-gray-400 mb-8">Get paid to stay focused</p>
+        <button class="bg-green-600 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition">
+          Start Now
+        </button>
+      </div>
+
+      <!-- How it works section -->
+      <div class="mt-16">
+        <h2 class="text-3xl font-bold mb-8 text-center">How it works</h2>
+        
+        <!-- Glass cards: Harry #43-45 Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-gray-800/50 backdrop-blur-lg border border-gray-700 p-6 rounded-xl hover:scale-105 transition duration-300">
+            <div class="text-4xl mb-4">🎯</div>
+            <h3 class="text-xl font-bold mb-2">1. Set Your Age</h3>
+            <p class="text-gray-400">We give you tasks that match your life stage</p>
+          </div>
+          
+          <div class="bg-gray-800/50 backdrop-blur-lg border border-gray-700 p-6 rounded-xl hover:scale-105 transition duration-300">
+            <div class="text-4xl mb-4">💰</div>
+            <h3 class="text-xl font-bold mb-2">2. Earn Coins</h3>
+            <p class="text-gray-400">Do real tasks like "Call Mom" or "Read 10 pages"</p>
+          </div>
+          
+          <div class="bg-gray-800/50 backdrop-blur-lg border border-gray-700 p-6 rounded-xl hover:scale-105 transition duration-300">
+            <div class="text-4xl mb-4">🔓</div>
+            <h3 class="text-xl font-bold mb-2">3. Unlock Time</h3>
+            <p class="text-gray-400">Spend coins to unblock Instagram, YouTube, etc</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
+
+  <!-- Floating coins animation -->
+  <div class="fixed top-20 left-10 text-4xl animate-bounce">🪙</div>
+  <div class="fixed top-40 right-20 text-3xl animate-pulse">🪙</div>
+  <div class="fixed bottom-20 left-1/4 text-5xl animate-bounce delay-300">🪙</div>
   
 </body>
 </html>
