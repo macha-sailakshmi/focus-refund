@@ -16,4 +16,4 @@ A productivity web app project
 - LocalStorage to save progress
 
 ## Screenshot
-![Focus Refund Homepage](screenshot.png)
+![Focus Refund Homepage](Screenshot.png)
