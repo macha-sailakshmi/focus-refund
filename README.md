@@ -14,3 +14,6 @@ A productivity web app project
 - Responsive design for mobile + desktop
 - Glassmorphism UI
 - LocalStorage to save progress
+
+## Screenshot
+![Focus Refund Homepage](screenshot.png)
