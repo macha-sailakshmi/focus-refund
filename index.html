@@ -1,59 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Focus Refund</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Refund - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body class="dashboard">
+    <div class="glass-card">
+        <h2>Welcome, <span id="userAge">18-22</span></h2>
+        <h3>Coins:<span id="coinCount">0</span></h3>
 
-<body>
-  <div class="app-wrapper">
-    <div class="app-container">
-
-      <!-- Hero Section -->
-      <section class="hero">
-        <h1>Stop Doomscrolling</h1>
-        <p>Get paid to stay focused</p>
-        <button class="btn-primary">Start Now</button>
-      </section>
-
-      <!-- How it works section -->
-      <section class="how-it-works">
-        <h2>How it works</h2>
-
-        <!-- Glass cards: Pure CSS Grid -->
-        <div class="cards-grid">
-        
-          <div class="glass-card">
-            <div class="card-icon">🎯</div>
-            <h3>1. Set Your Age</h3>
-            <p>We give you tasks that match your life stage</p>
-          </div>
-
-          <div class="glass-card">
-            <div class="card-icon">💰</div>
-            <h3>2. Earn Coins</h3>
-            <p>Do real tasks like "Call Mom" or "Read 10 pages"</p>
-          </div>
-
-          <div class="glass-card">
-            <div class="card-icon">🔓</div>
-            <h3>3. Unlock Time</h3>
-            <p>Spend coins to unblock Instagram, YouTube, etc</p>
-          </div>
-        </div>
-      </section>
+    <div id="taskList"></div>
+    <button id ="unlockBtn" disabled>Unlock Instagram -50 coins</button>    
 
     </div>
-  </div>
-
-  <!-- Floating coins animation -->
-  <div class="coin coin-1">🪙</div>
-  <div class="coin coin-2">🪙</div>
-  <div class="coin coin-3">🪙</div>
-
+    <script src="app.js"></script>
+    
 </body>
-
 </html>
