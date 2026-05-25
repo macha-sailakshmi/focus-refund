@@ -1,21 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Focus Refund - Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusRefund - Reclaim Your Attention</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', sans-serif; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: 20px;
+    }
+    .container { 
+      background: rgba(255,255,255,0.1); 
+      backdrop-filter: blur(10px); 
+      border-radius: 20px; 
+      padding: 50px; 
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.2);
+      max-width: 600px;
+    }
+    h1 { color: white; font-size: 48px; margin-bottom: 16px; }
+    p { color: rgba(255,255,255,0.8); font-size: 18px; margin-bottom: 40px; }
+    .cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .card { 
+      background: rgba(255,255,255,0.15); 
+      padding: 30px; 
+      border-radius: 16px; 
+      text-decoration: none; 
+      color: white; 
+      width: 220px;
+      transition: transform 0.3s;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.2); }
+    .card h2 { font-size: 24px; margin-bottom: 8px; }
+    .card span { opacity: 0.8; font-size: 14px; }
+  </style>
 </head>
-<body class="dashboard">
-    <div class="glass-card">
-        <h2>Welcome, <span id="userAge">18-22</span></h2>
-        <h3>Coins:<span id="coinCount">0</span></h3>
-
-    <div id="taskList"></div>
-    <button id ="unlockBtn" disabled>Unlock Instagram -50 coins</button>    
-
+<body>
+  <div class="container">
+    <h1>FocusRefund</h1>
+    <p>A behavioral-economics platform that penalizes scrolling and rewards focus</p>
+    <div class="cards">
+      <a href="dashboard/index.html" class="card">
+        <h2>🧠 The Brain</h2>
+        <span>FocusRefund Dashboard<br>Coin Economy</span>
+      </a>
+      <a href="interceptor/stopscroll.html" class="card">
+        <h2>💪 The Muscle</h2>
+        <span>Interceptor Tool<br>Breaks Infinite Scroll</span>
+      </a>
     </div>
-    <script src="app.js"></script>
-    
+  </div>
 </body>
 </html>
