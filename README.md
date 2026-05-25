@@ -15,5 +15,10 @@ A productivity web app project
 - Glassmorphism UI
 - LocalStorage to save progress
 
-## Screenshot
-![Focus Refund Homepage](Screenshot.png)
+## Screenshots
+
+### Landing Page
+![Landing Page](landing-preview.png)
+
+### Dashboard - The Brain  
+![Dashboard](dashboard/dashboard-preview.png)
