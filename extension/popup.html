@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { 
+      width: 200px; 
+      padding: 15px; 
+      font-family: Arial; 
+      background: #0f172a; 
+      color: white; 
+    }
+    h3 { margin: 0 0 10px 0; color: #3b82f6; }
+    button { 
+      width: 100%; 
+      padding: 8px; 
+      margin-top: 10px; 
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover { background: #2563eb; }
+    #openDashboard {
+      background: #16a34a;
+    }
+    #openDashboard:hover {
+      background: #15803d;
+    }
+  </style>
+</head>
+<body>
+  <h3>💪 FocusRefund</h3>
+  <p>Balance: <span id="balance">--</span> coins</p>
+  <button id="unlockBtn">Unlock 10 min for 50 coins</button>
+  <button id="openDashboard">Open The Brain Dashboard</button>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

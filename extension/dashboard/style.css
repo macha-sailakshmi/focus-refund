@@ -1,0 +1,270 @@
+/* ===== SECTION 1: BASE RESET + THEME ===== */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-dark: #0f172a;
+  --bg-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --accent: #38bdf8;
+  --green: #16a34a;
+  --green-hover: #15803d;
+  --radius-lg: 1rem;
+  --radius-md: 0.5rem;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+/* ===== SECTION 2: LAYOUT + GLASS CARDS ===== */
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 1rem;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 1152px;
+  padding: 1.5rem;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  background-color: var(--green);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--green-hover);
+  transform: translateY(-2px);
+}
+
+/* How it works */
+.how-it-works h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Pure CSS Grid - Harry #46-48 */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Glassmorphism - Harry #49-50 */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.3s ease;
+}
+#taskList {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.task-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.task-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgba(0, 255, 0, 0.2); /* Green when done */
+}
+
+#unlockBtn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#unlockBtn:disabled {
+  background: #555;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.glass-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.card-icon {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.glass-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.glass-card p {
+  color: var(--text-secondary);
+}
+
+/* Floating coins */
+.coin {
+  position: fixed;
+  pointer-events: none;
+}
+
+.coin-1 {
+  top: 5rem;
+  left: 2.5rem;
+  font-size: 2.25rem;
+  animation: bounce 2s infinite;
+}
+
+.coin-2 {
+  top: 10rem;
+  right: 5rem;
+  font-size: 1.875rem;
+  animation: pulse 2s infinite;
+}
+
+.coin-3 {
+  bottom: 5rem;
+  left: 25%;
+  font-size: 3rem;
+  animation: bounce 2s infinite 0.3s;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-25%); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+/* ===== SECTION 3: RESPONSIVE ===== */
+
+@media (max-width: 1024px) {
+ .hero h1 {
+    font-size: 2.5rem;
+  }
+ .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+ .app-wrapper {
+    padding: 3rem 1rem;
+  }
+ .hero h1 {
+    font-size: 2rem;
+  }
+ .hero p {
+    font-size: 1rem;
+  }
+ .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+ .coin {
+    display: none;
+  }
+}
+
+.task-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin: 10px 0;
+}
+
+.add-btn {
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.add-btn:hover {
+  background: var(--green-hover);
+}
