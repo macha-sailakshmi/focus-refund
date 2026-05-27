@@ -21,4 +21,4 @@ A productivity web app project
 ![Landing Page](landing-preview.png)
 
 ### Dashboard - The Brain  
-![Dashboard](dashboard/dashboard-preview.png)
+![Dashboard](extension/dashboard/dashboard/dashboard-preview.png)
