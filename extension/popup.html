@@ -3,38 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body { 
-      width: 200px; 
-      padding: 15px; 
-      font-family: Arial; 
-      background: #0f172a; 
+      width: 280px; 
+      margin: 0;
+      padding: 16px; 
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(59, 130, 246, 0.32), transparent 11rem),
+        #0f172a;
       color: white; 
     }
-    h3 { margin: 0 0 10px 0; color: #3b82f6; }
+    .popup-card {
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(15, 23, 42, 0.72);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+    }
+    h3 {
+      margin: 0 0 14px;
+      color: #93c5fd;
+      font-size: 1.25rem;
+      letter-spacing: 0;
+    }
+    .balance-card {
+      padding: 14px;
+      margin-bottom: 14px;
+      border-radius: 14px;
+      background: rgba(96, 165, 250, 0.12);
+      border: 1px solid rgba(96, 165, 250, 0.22);
+    }
+    .balance-card span:first-child {
+      display: block;
+      color: #cbd5e1;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    #balance {
+      color: white;
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-top: 8px;
+    }
     button { 
       width: 100%; 
-      padding: 8px; 
+      min-height: 44px;
+      padding: 10px 12px; 
       margin-top: 10px; 
       background: #3b82f6;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 12px;
       cursor: pointer;
+      font: inherit;
+      font-weight: 850;
+      transition: transform 0.2s ease, background 0.2s ease;
     }
-    button:hover { background: #2563eb; }
+    button:hover { background: #2563eb; transform: translateY(-1px); }
     #openDashboard {
-      background: #16a34a;
+      background: linear-gradient(135deg, #2563eb, #16a34a);
     }
     #openDashboard:hover {
-      background: #15803d;
+      background: linear-gradient(135deg, #1d4ed8, #15803d);
     }
   </style>
 </head>
 <body>
-  <h3>💪 FocusRefund</h3>
-  <p>Balance: <span id="balance">--</span> coins</p>
-  <button id="unlockBtn">Unlock 10 min for 50 coins</button>
-  <button id="openDashboard">Open The Brain Dashboard</button>
+  <div class="popup-card">
+    <h3>FocusRefund</h3>
+    <div class="balance-card">
+      <span>Balance</span>
+      <div><span id="balance">--</span> coins</div>
+    </div>
+    <button id="unlockBtn">Unlock 10 min for 50 coins</button>
+    <button id="openDashboard">Open The Brain Dashboard</button>
+  </div>
   
   <script src="popup.js"></script>
 </body>

@@ -16,6 +16,9 @@
     "default_popup": "popup.html",
     "default_title": "FocusRefund"
   },
+  "background": {
+    "service_worker": "background.js"
+  },
   "web_accessible_resources": [{
     "resources": ["dashboard/*"],
     "matches": ["<all_urls>"]

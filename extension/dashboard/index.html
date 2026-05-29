@@ -7,26 +7,47 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dashboard">
-    <a href="../index.html" style="position:absolute;top:20px;left:20px;color:white;text-decoration:none;opacity:0.7;">← Home</a>
+    <main class="dashboard-shell">
+        <nav class="dashboard-nav">
+            <a href="../../index.html" class="back-link">Back Home</a>
+            <span class="product-mark">FocusRefund</span>
+        </nav>
 
-    <div class="glass-card">
-        <h2>🧠 The Brain</h2>
-        <h3>Welcome, <span id="userAgeDisplay">18-22</span></h3>
-        <h3>Coins: <span id="coinCount">0</span></h3>
+        <section class="brain-panel">
+            <div class="brain-header">
+                <div>
+                    <p class="eyebrow">The Brain</p>
+                    <h1>Earn Focus Coins</h1>
+                    <p class="header-copy">Pick your age group, finish real tasks, and spend coins only when you choose to unlock Instagram.</p>
+                </div>
+                <div class="coin-balance">
+                    <span>Coins</span>
+                    <strong id="coinCount">0</strong>
+                </div>
+            </div>
 
-        <label>Select Age: 
-            <select id="ageSelect">
-                <option value="13-17">13-17</option>
-                <option value="18-22" selected>18-22</option>
-                <option value="23-27">23-27</option>
-                <option value="28-35">28-35</option>
-                <option value="35+">35+</option>
-            </select>
-        </label>
+            <div class="controls-row">
+                <div>
+                    <span class="control-label">Current age group</span>
+                    <strong id="userAgeDisplay">18-22</strong>
+                </div>
+                <label>
+                    <span class="control-label">What is your age group?</span>
+                    <select id="ageSelect">
+                        <option value="13-17">13-17</option>
+                        <option value="18-22" selected>18-22</option>
+                        <option value="23-27">23-27</option>
+                        <option value="28-35">28-35</option>
+                        <option value="35+">35+</option>
+                    </select>
+                    <span id="ageLockStatus" class="helper-text"></span>
+                </label>
+                <button id="unlockBtn" disabled>Unlock Instagram -50 coins</button>
+            </div>
 
-        <div id="taskList"></div>
-        <button id="unlockBtn" disabled>Unlock Instagram -50 coins</button> 
-    </div>
+            <div id="taskList" class="task-list"></div>
+        </section>
+    </main>
     
     <script src="app.js"></script>
 </body>

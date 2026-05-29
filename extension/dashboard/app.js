@@ -58,7 +58,7 @@ const storage = window.chrome?.storage?.sync || {
 // 3. GLOBAL VARS
 let coins = 0;
 let ageGroup = "18-22";
-let ageLocked = false;
+let ageLockedToday = false;
 const today = new Date().toDateString();
 let activeTimer = null; // {timerId, interval, sessionStart, secondsDone, targetSeconds}
 
@@ -68,21 +68,18 @@ const userAgeDisplay = document.getElementById("userAgeDisplay");
 const taskList = document.getElementById("taskList");
 const coinCount = document.getElementById("coinCount");
 const unlockBtn = document.getElementById("unlockBtn");
+const ageLockStatus = document.getElementById("ageLockStatus");
 
 // 5. INIT
-storage.get(["focusCoins", "userAge", "ageLocked"], (result) => {
+storage.get(["focusCoins", "userAge", "ageLockDate"], (result) => {
   coins = Number(result.focusCoins) || 0;
   ageGroup = result.userAge || "18-22";
-  ageLocked = result.ageLocked === true;
+  ageLockedToday = result.ageLockDate === today;
 
   ageSelect.value = ageGroup;
   userAgeDisplay.textContent = ageGroup;
   coinCount.textContent = coins;
-
-  if (ageLocked) {
-    ageSelect.disabled = true;
-    ageSelect.style.opacity = "0.5";
-  }
+  updateAgeControlState();
 
   checkUnlockButton();
   renderTasks();
@@ -99,10 +96,10 @@ function renderTasks() {
 
     storage.get([taskKey, timeKey, repeatKey], (result) => {
       const taskRow = document.createElement("div");
-      taskRow.style.cssText = "margin-bottom:15px;padding:20px;background:rgba(255,255,255,0.05);border-radius:8px;";
+      taskRow.className = "task-card";
 
       const taskLabel = document.createElement("div");
-      taskLabel.style.cssText = "margin-bottom:10px;font-weight:bold;font-size:1.1rem;";
+      taskLabel.className = "task-title";
 
       const isDoneToday = result[taskKey] === true;
       let secondsDone = Number(result[timeKey]) || 0;
@@ -120,38 +117,41 @@ function renderTasks() {
         // Large countdown display
         const countdownDisplay = document.createElement("div");
         countdownDisplay.id = `${timerId}_countdown`;
-        countdownDisplay.style.cssText = "font-size:2.5rem;margin:10px 0;font-weight:bold;color:#3b82f6;text-align:center;";
+        countdownDisplay.className = "timer-display";
         countdownDisplay.textContent = formatTime(targetSecs - secondsDone);
 
         // Progress text with seconds
         const progressDisplay = document.createElement("div");
-        progressDisplay.style.cssText = "font-size:1rem;margin:10px 0;font-weight:bold;color:#94a3b8;text-align:center;";
+        progressDisplay.className = "timer-progress-text";
         progressDisplay.textContent = `${formatTimeShort(secondsDone)} / ${formatTimeShort(targetSecs)}`;
 
         // Progress bar
         const progressBar = document.createElement("div");
-        progressBar.style.cssText = "width:100%;height:8px;background:rgba(255,255,255,0.1);border-radius:4px;margin:10px 0;overflow:hidden;";
+        progressBar.className = "progress-track";
         const progressFill = document.createElement("div");
-        progressFill.style.cssText = `width:${(secondsDone / targetSecs) * 100}%;height:100%;background:#3b82f6;transition:width 0.3s;`;
+        progressFill.className = "progress-fill";
+        progressFill.style.width = `${(secondsDone / targetSecs) * 100}%`;
         progressBar.appendChild(progressFill);
 
         const btnContainer = document.createElement("div");
-        btnContainer.style.textAlign = "center";
+        btnContainer.className = "task-actions";
 
         const startBtn = document.createElement("button");
         startBtn.textContent = secondsDone > 0 && secondsDone < targetSecs? "Continue" : "Start";
-        startBtn.style.cssText = "padding:10px 20px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin:5px;";
+        startBtn.className = "action-btn primary";
 
         const pauseBtn = document.createElement("button");
         pauseBtn.textContent = "Pause";
-        pauseBtn.style.cssText = "padding:10px 20px;background:#f59e0b;color:white;border:none;border-radius:6px;cursor:pointer;margin:5px;display:none;";
+        pauseBtn.className = "action-btn pause";
+        pauseBtn.style.display = "none";
 
         const claimBtn = document.createElement("button");
         claimBtn.textContent = `Claim +${coinValue} coins`;
-        claimBtn.style.cssText = "padding:10px 20px;background:#22c55e;color:white;border:none;border-radius:6px;cursor:pointer;margin:5px;display:none;";
+        claimBtn.className = "action-btn claim";
+        claimBtn.style.display = "none";
 
         const statusText = document.createElement("div");
-        statusText.style.cssText = "font-size:0.9rem;color:#94a3b8;margin-top:10px;text-align:center;";
+        statusText.className = "task-status";
         
         // Set initial state
         if (!task.repeatable && isDoneToday) {
@@ -301,7 +301,8 @@ function renderTasks() {
 
       } else {
         const addBtn = document.createElement("button");
-        addBtn.style.cssText = "padding:10px 20px;background:#16a34a;color:white;border:none;border-radius:6px;cursor:pointer;float:right;";
+        addBtn.className = "action-btn done";
+        taskRow.classList.add("simple");
 
         if (!task.repeatable && isDoneToday) {
           taskLabel.textContent = `${task.name} ✓ Done Today`;
@@ -374,25 +375,29 @@ function checkUnlockButton() {
   }
 }
 
+function updateAgeControlState() {
+  ageSelect.disabled = ageLockedToday;
+  ageSelect.style.opacity = ageLockedToday ? "0.65" : "1";
+  ageLockStatus.textContent = ageLockedToday
+    ? "Locked for today to keep tasks fair."
+    : "Choose once for today's task list.";
+}
+
 ageSelect.addEventListener("change", () => {
-  if (ageLocked) return;
+  if (ageLockedToday) return;
   if (activeTimer) {
     alert("Pause your active timer before changing age group");
     ageSelect.value = ageGroup;
     return;
   }
-  if (confirm("Lock age group permanently?")) {
-    ageGroup = ageSelect.value;
-    storage.set({ userAge: ageGroup, ageLocked: true }, () => {
-      userAgeDisplay.textContent = ageGroup;
-      ageSelect.disabled = true;
-      ageSelect.style.opacity = "0.5";
-      ageLocked = true;
-      renderTasks();
-    });
-  } else {
-    ageSelect.value = ageGroup;
-  }
+
+  ageGroup = ageSelect.value;
+  storage.set({ userAge: ageGroup, ageLockDate: today, ageLocked: false }, () => {
+    ageLockedToday = true;
+    userAgeDisplay.textContent = ageGroup;
+    updateAgeControlState();
+    renderTasks();
+  });
 });
 
 unlockBtn.addEventListener("click", () => {
