@@ -10,17 +10,20 @@
 
 :root {
   --bg-dark: #0f172a;
-  --bg-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --bg-gradient: linear-gradient(135deg, #09111f 0%, #111827 54%, #0f172a 100%);
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   --text-primary: #f1f5f9;
   --text-secondary: #cbd5e1;
   --accent: #38bdf8;
+  --blue: #60a5fa;
   --green: #16a34a;
   --green-hover: #15803d;
   --radius-lg: 1rem;
   --radius-md: 0.5rem;
+  --font-display: "Segoe UI Variable Display", "Aptos Display", "SF Pro Display", "Segoe UI", sans-serif;
+  --font-body: "Segoe UI Variable Text", "Aptos", "Inter", "Segoe UI", sans-serif;
 }
 
 html {
@@ -29,7 +32,7 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   background: var(--bg-gradient);
   color: var(--text-primary);
   line-height: 1.6;
@@ -56,8 +59,8 @@ button:disabled {
 .dashboard {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 32rem),
-    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.16), transparent 28rem),
+    radial-gradient(circle at 12% 8%, rgba(96, 165, 250, 0.22), transparent 34rem),
+    radial-gradient(circle at 88% 20%, rgba(34, 197, 94, 0.14), transparent 30rem),
     #0f172a;
 }
 
@@ -91,8 +94,19 @@ button:disabled {
   letter-spacing: 0;
 }
 
+.product-mark::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 10px;
+  border-radius: 999px;
+  background: var(--green);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.65);
+}
+
 .brain-panel {
-  background: rgba(15, 23, 42, 0.78);
+  background: rgba(15, 23, 42, 0.82);
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 24px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
@@ -122,9 +136,12 @@ button:disabled {
 
 .brain-header h1 {
   color: var(--text-primary);
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 850;
   line-height: 1;
   margin: 8px 0 14px;
+  letter-spacing: -0.025em;
 }
 
 .header-copy {
@@ -132,6 +149,12 @@ button:disabled {
   max-width: 680px;
   font-size: 1rem;
   margin: 0;
+}
+
+.brain-header h1,
+.timer-display,
+.coin-balance strong {
+  letter-spacing: 0;
 }
 
 .coin-balance {
@@ -146,8 +169,10 @@ button:disabled {
 
 .coin-balance strong {
   display: block;
+  font-family: var(--font-display);
   color: white;
   font-size: 3rem;
+  font-weight: 850;
   line-height: 1;
   margin-top: 8px;
 }
@@ -237,17 +262,56 @@ button:disabled {
 .task-title {
   color: white;
   font-size: 1.05rem;
-  font-weight: 800;
-  margin-bottom: 12px;
+  font-weight: 850;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.task-info .task-title {
+  margin-bottom: 8px;
+}
+
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: #cbd5e1;
+  background: rgba(148, 163, 184, 0.12);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  font-size: 0.76rem;
+  font-weight: 850;
+}
+
+.meta-pill.repeatable {
+  color: #bbf7d0;
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.26);
+}
+
+.meta-pill.once {
+  color: #bfdbfe;
+  background: rgba(96, 165, 250, 0.12);
+  border-color: rgba(96, 165, 250, 0.28);
 }
 
 .timer-display {
   color: #60a5fa;
+  font-family: var(--font-display);
   font-size: clamp(2.5rem, 8vw, 4.2rem);
-  font-weight: 900;
+  font-weight: 850;
   line-height: 1;
   margin: 20px 0 12px;
   text-align: center;
+  letter-spacing: -0.03em;
 }
 
 .timer-progress-text,
@@ -337,6 +401,10 @@ button:disabled {
   gap: 16px;
   align-items: center;
 }
+
+.task-card.simple .task-meta {
+  margin-bottom: 0;
+}
 /* ===== SECTION 2: LAYOUT + GLASS CARDS ===== */
 
 .app-wrapper {
@@ -360,9 +428,11 @@ button:disabled {
 }
 
 .hero h1 {
+  font-family: var(--font-display);
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 850;
   margin-bottom: 1rem;
+  letter-spacing: -0.025em;
 }
 
 .hero p {

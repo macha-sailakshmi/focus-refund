@@ -104,6 +104,7 @@ function renderTasks() {
       const isDoneToday = result[taskKey] === true;
       let secondsDone = Number(result[timeKey]) || 0;
       let repeatCount = Number(result[repeatKey]) || 0;
+      const taskMeta = createTaskMeta(task);
 
       if (task.type === "timer") {
         const timerId = `timer_${idx}`;
@@ -293,6 +294,7 @@ function renderTasks() {
         btnContainer.appendChild(pauseBtn);
         btnContainer.appendChild(claimBtn);
         taskRow.appendChild(taskLabel);
+        taskRow.appendChild(taskMeta);
         taskRow.appendChild(countdownDisplay);
         taskRow.appendChild(progressDisplay);
         taskRow.appendChild(progressBar);
@@ -303,6 +305,8 @@ function renderTasks() {
         const addBtn = document.createElement("button");
         addBtn.className = "action-btn done";
         taskRow.classList.add("simple");
+        const taskInfo = document.createElement("div");
+        taskInfo.className = "task-info";
 
         if (!task.repeatable && isDoneToday) {
           taskLabel.textContent = `${task.name} ✓ Done Today`;
@@ -340,13 +344,32 @@ function renderTasks() {
           });
         };
 
-        taskRow.appendChild(taskLabel);
+        taskInfo.appendChild(taskLabel);
+        taskInfo.appendChild(taskMeta);
+        taskRow.appendChild(taskInfo);
         taskRow.appendChild(addBtn);
       }
 
       taskList.appendChild(taskRow);
     });
   });
+}
+
+function createTaskMeta(task) {
+  const meta = document.createElement("div");
+  meta.className = "task-meta";
+
+  const cadence = document.createElement("span");
+  cadence.className = task.repeatable ? "meta-pill repeatable" : "meta-pill once";
+  cadence.textContent = task.repeatable ? "Repeatable" : "Once today";
+
+  const mode = document.createElement("span");
+  mode.className = "meta-pill";
+  mode.textContent = task.type === "timer" ? "Timer task" : "Quick task";
+
+  meta.appendChild(cadence);
+  meta.appendChild(mode);
+  return meta;
 }
 
 // Helper: format seconds to MM:SS

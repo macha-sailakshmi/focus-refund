@@ -18,7 +18,7 @@ async function enforceBlock() {
           place-items: center;
           padding: 24px;
           color: #f8fafc;
-          font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          font-family: "Segoe UI Variable Text", "Aptos", "Inter", "Segoe UI", sans-serif;
           text-align: center;
           background:
             radial-gradient(circle at 25% 12%, rgba(59, 130, 246, 0.28), transparent 30rem),
@@ -42,13 +42,19 @@ async function enforceBlock() {
           text-transform: uppercase;
         }
         .focus-refund-card h1 {
+          font-family: "Segoe UI Variable Display", "Aptos Display", "Segoe UI", sans-serif;
           margin: 14px 0 10px;
           font-size: clamp(2.6rem, 8vw, 4.8rem);
+          font-weight: 850;
           line-height: 0.95;
+          letter-spacing: -0.03em;
         }
         .focus-refund-card h2 {
+          font-family: "Segoe UI Variable Display", "Aptos Display", "Segoe UI", sans-serif;
           margin: 0 0 24px;
           font-size: 1.55rem;
+          font-weight: 800;
+          letter-spacing: -0.015em;
         }
         .focus-refund-card p {
           margin: 12px 0;
