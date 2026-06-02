@@ -18,7 +18,7 @@ async function enforceBlock() {
           place-items: center;
           padding: 24px;
           color: #f8fafc;
-          font-family: "Segoe UI Variable Text", "Aptos", "Inter", "Segoe UI", sans-serif;
+          font-family: "Cascadia Code", "Roboto Mono", "JetBrains Mono", "Consolas", monospace;
           text-align: center;
           background:
             radial-gradient(circle at 25% 12%, rgba(59, 130, 246, 0.28), transparent 30rem),
@@ -37,29 +37,29 @@ async function enforceBlock() {
         .focus-refund-eyebrow {
           color: #93c5fd;
           font-size: 0.8rem;
-          font-weight: 900;
+          font-weight: 800;
           letter-spacing: 0.12em;
           text-transform: uppercase;
         }
         .focus-refund-card h1 {
-          font-family: "Segoe UI Variable Display", "Aptos Display", "Segoe UI", sans-serif;
+          font-family: "Cascadia Code", "Roboto Mono", "JetBrains Mono", "Consolas", monospace;
           margin: 14px 0 10px;
-          font-size: clamp(2.6rem, 8vw, 4.8rem);
-          font-weight: 850;
-          line-height: 0.95;
+          font-size: clamp(2.2rem, 6vw, 3.8rem);
+          font-weight: 800;
+          line-height: 1.04;
           letter-spacing: -0.03em;
         }
         .focus-refund-card h2 {
-          font-family: "Segoe UI Variable Display", "Aptos Display", "Segoe UI", sans-serif;
+          font-family: "Cascadia Code", "Roboto Mono", "JetBrains Mono", "Consolas", monospace;
           margin: 0 0 24px;
-          font-size: 1.55rem;
+          font-size: 1.2rem;
           font-weight: 800;
           letter-spacing: -0.015em;
         }
         .focus-refund-card p {
           margin: 12px 0;
           color: #cbd5e1;
-          font-size: 1.05rem;
+          font-size: 0.96rem;
           line-height: 1.6;
         }
         .focus-refund-balance {
@@ -67,24 +67,24 @@ async function enforceBlock() {
           width: fit-content;
           min-width: 180px;
           padding: 16px 22px;
-          border: 1px solid rgba(96, 165, 250, 0.28);
+          border: 1px solid rgba(250, 204, 21, 0.32);
           border-radius: 18px;
-          background: rgba(96, 165, 250, 0.12);
+          background: rgba(250, 204, 21, 0.12);
         }
         .focus-refund-balance strong {
-          color: white;
-          font-size: 2.4rem;
+          color: #facc15;
+          font-size: 2rem;
         }
         #focusRefundCloseTab {
           min-height: 48px;
           margin-top: 22px;
           padding: 0 24px;
-          background: linear-gradient(135deg, #2563eb, #16a34a);
+          background: linear-gradient(135deg, #ef4444, #b91c1c);
           border: none;
           border-radius: 12px;
           color: white;
           font: inherit;
-          font-weight: 900;
+          font-weight: 800;
           cursor: pointer;
           transition: transform 0.2s ease;
         }
