@@ -8,7 +8,7 @@ const tasksByAge = {
     { name: "Clean room +10", repeatable: false, type: "button" }
   ],
   "18-22": [
-    { name: "Study 2hrs +15", repeatable: false, type: "timer", targetSeconds: 120 * 60 },
+    { name: "Study 2hrs +15", repeatable: true, type: "timer", targetSeconds: 120 * 60 },
     { name: "LeetCode 1 problem +10", repeatable: true, type: "timer", targetSeconds: 30 * 60 },
     { name: "Gym session +10", repeatable: false, type: "button" },
     { name: "No reels 3hrs +15", repeatable: false, type: "button" },
