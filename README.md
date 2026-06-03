@@ -1,6 +1,6 @@
 # FocusRefund
 
-FocusRefund is a productivity experiment that turns distracting app access into a coin economy. Users earn Focus Coins by completing real-world focus tasks, then spend coins to unlock Instagram for a short window.
+FocusRefund is a productivity experiment that turns distracting site access into a coin economy. Users earn Focus Coins by completing real-world focus tasks, then spend coins to unlock selected distracting sites for a short window.
 
 **Live demo**: https://focus-refund.pages.dev
 
@@ -16,14 +16,14 @@ FocusRefund is a productivity experiment that turns distracting app access into 
 
 1. Choose an age group to get a task list.
 2. Complete focus tasks to earn Focus Coins.
-3. Spend 50 coins to unlock Instagram for 10 minutes.
-4. The Chrome extension blocks Instagram again after the unlock time expires.
+3. Spend 50 coins to unlock selected distracting sites for 10 minutes.
+4. The Chrome extension blocks those sites again after the unlock time expires.
 
 ## Features
 
 - Responsive landing page and dashboard
 - Chrome extension popup
-- Instagram blocker content script
+- Multi-site distraction blocker content script
 - Daily age-group locking to reduce task switching
 - Timer-based and quick-complete tasks
 - Repeatable and once-per-day task types
@@ -36,7 +36,7 @@ FocusRefund is a productivity experiment that turns distracting app access into 
 index.html                       Landing page
 extension/popup.html             Chrome extension popup
 extension/dashboard/index.html   Focus task dashboard
-extension/content.js             Instagram blocker
+extension/content.js             Multi-site distraction blocker
 extension/background.js          Extension background worker
 interceptor/stopscroll.html      Demo explainer page
 ```
