@@ -7,6 +7,13 @@ async function enforceBlock() {
   const now = Date.now();
   const isUnlocked = igUnlockUntil > now;
 
+  if (isUnlocked) {
+    if (document.documentElement.dataset.focusRefundBlocked === "true") {
+      location.reload();
+    }
+    return;
+  }
+
   if (!isUnlocked) {
     document.documentElement.innerHTML = `
       <style>
@@ -21,9 +28,9 @@ async function enforceBlock() {
           font-family: "Cascadia Code", "Roboto Mono", "JetBrains Mono", "Consolas", monospace;
           text-align: center;
           background:
-            radial-gradient(circle at 25% 12%, rgba(59, 130, 246, 0.28), transparent 30rem),
-            radial-gradient(circle at 78% 88%, rgba(34, 197, 94, 0.18), transparent 28rem),
-            #0f172a;
+            radial-gradient(circle at 25% 12%, rgba(250, 204, 21, 0.18), transparent 30rem),
+            radial-gradient(circle at 78% 88%, rgba(202, 138, 4, 0.12), transparent 28rem),
+            #05070b;
         }
         .focus-refund-card {
           width: min(520px, 100%);
@@ -35,7 +42,7 @@ async function enforceBlock() {
           animation: focusRefundRise 420ms ease both;
         }
         .focus-refund-eyebrow {
-          color: #93c5fd;
+          color: #facc15;
           font-size: 0.8rem;
           font-weight: 800;
           letter-spacing: 0.12em;
@@ -110,6 +117,7 @@ async function enforceBlock() {
         </div>
       </div>
     `;
+    document.documentElement.dataset.focusRefundBlocked = "true";
     document.documentElement.style.overflow = "hidden";
     document.getElementById("focusRefundCloseTab")?.addEventListener("click", () => {
       chrome.runtime.sendMessage({ type: "FOCUS_REFUND_CLOSE_TAB" });
