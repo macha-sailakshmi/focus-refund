@@ -43,12 +43,18 @@ interceptor/stopscroll.html      Demo explainer page
 
 ## Screenshots
 
-Screenshots will be updated after the final visual polish pass.
-
 ### Landing Page
 
-![Landing Page](landing-preview.png)
+![Landing Page](screenshots/landing-page.png)
 
 ### Dashboard - The Brain
 
-![Dashboard](extension/dashboard/dashboard-preview.png)
+![Dashboard - The Brain](screenshots/brain-dashboard.png)
+
+### Chrome Extension Popup
+
+![Chrome Extension Popup](screenshots/extension-popup.png)
+
+### Interceptor - The Muscle
+
+![Interceptor - The Muscle](screenshots/muscle-interceptor.png)
