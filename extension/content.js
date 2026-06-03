@@ -6,6 +6,7 @@ async function enforceBlock() {
 
   const now = Date.now();
   const isUnlocked = igUnlockUntil > now;
+  const siteName = getBlockedSiteName();
 
   if (isUnlocked) {
     if (document.documentElement.dataset.focusRefundBlocked === "true") {
@@ -105,7 +106,7 @@ async function enforceBlock() {
         <div class="focus-refund-card">
           <div class="focus-refund-eyebrow">The Muscle</div>
           <h1>Pause.</h1>
-          <h2>Instagram is locked</h2>
+          <h2>${siteName} is locked</h2>
           <div class="focus-refund-balance">
             <p>You have</p>
             <strong>${focusCoins}</strong>
@@ -123,6 +124,16 @@ async function enforceBlock() {
       chrome.runtime.sendMessage({ type: "FOCUS_REFUND_CLOSE_TAB" });
     });
   }
+}
+
+function getBlockedSiteName() {
+  const host = location.hostname.replace(/^www\./, "");
+
+  if (host.includes("youtube.com")) return "YouTube";
+  if (host.includes("reddit.com")) return "Reddit";
+  if (host.includes("twitter.com")) return "Twitter";
+  if (host.includes("x.com")) return "X";
+  return "Instagram";
 }
 
 enforceBlock();

@@ -156,13 +156,13 @@ function renderTasks() {
         
         // Set initial state
         if (!task.repeatable && isDoneToday) {
-          statusText.textContent = "✓ Completed today";
+          statusText.textContent = "Completed today";
           statusText.style.color = "#22c55e";
           startBtn.disabled = true;
           startBtn.textContent = "Done Today";
           startBtn.style.opacity = "0.5";
         } else if (secondsDone >= targetSecs) {
-          statusText.textContent = "✓ Target reached! Claim your coins";
+          statusText.textContent = "Target reached! Claim your coins";
           statusText.style.color = "#22c55e";
           startBtn.style.display = "none";
           claimBtn.style.display = "inline-block";
@@ -226,7 +226,7 @@ function renderTasks() {
                 activeTimer = null;
                 pauseBtn.style.display = "none";
                 claimBtn.style.display = "inline-block";
-                statusText.textContent = "✓ Target reached! Claim your coins";
+                statusText.textContent = "Target reached! Claim your coins";
                 statusText.style.color = "#22c55e";
                 countdownDisplay.textContent = "00:00";
                 progressDisplay.textContent = `${formatTimeShort(targetSecs)} / ${formatTimeShort(targetSecs)}`;
@@ -240,9 +240,7 @@ function renderTasks() {
         pauseBtn.onclick = () => {
           if (!activeTimer) return;
           
-          clearInterval(activeTimer.interval);
-          const elapsedSeconds = Math.floor((Date.now() - activeTimer.sessionStart) / 1000);
-          const newSecondsDone = activeTimer.secondsDone + elapsedSeconds;
+          const newSecondsDone = pauseActiveTimer();
           
           storage.set({ [timeKey]: newSecondsDone }, () => {
             activeTimer = null;
@@ -276,7 +274,7 @@ function renderTasks() {
           storage.set(updates, () => {
             coinCount.textContent = coins;
             checkUnlockButton();
-            statusText.textContent = `✓ +${coinValue} coins earned!`;
+            statusText.textContent = `+${coinValue} coins earned!`;
             claimBtn.style.display = "none";
             startBtn.style.display = "inline-block";
             startBtn.disabled =!task.repeatable;
@@ -309,7 +307,7 @@ function renderTasks() {
         taskInfo.className = "task-info";
 
         if (!task.repeatable && isDoneToday) {
-          taskLabel.textContent = `${task.name} ✓ Done Today`;
+          taskLabel.textContent = `${task.name} - Done Today`;
           addBtn.textContent = "Done";
           addBtn.disabled = true;
           addBtn.style.opacity = "0.5";
@@ -328,7 +326,7 @@ function renderTasks() {
 
           if (!task.repeatable) {
             updates[taskKey] = true;
-            taskLabel.textContent = `${task.name} ✓ Done Today`;
+            taskLabel.textContent = `${task.name} - Done Today`;
             addBtn.textContent = "Done";
             addBtn.disabled = true;
             addBtn.style.opacity = "0.5";
@@ -398,6 +396,29 @@ function checkUnlockButton() {
   }
 }
 
+function pauseActiveTimer() {
+  if (!activeTimer) return 0;
+
+  clearInterval(activeTimer.interval);
+  const elapsedSeconds = Math.floor((Date.now() - activeTimer.sessionStart) / 1000);
+  return Math.min(
+    activeTimer.secondsDone + elapsedSeconds,
+    activeTimer.targetSeconds
+  );
+}
+
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden || !activeTimer) return;
+
+  const timeKey = activeTimer.timeKey;
+  const newSecondsDone = pauseActiveTimer();
+  activeTimer = null;
+
+  storage.set({ [timeKey]: newSecondsDone }, () => {
+    renderTasks();
+  });
+});
+
 function updateAgeControlState() {
   ageSelect.disabled = ageLockedToday;
   ageSelect.style.opacity = ageLockedToday ? "0.65" : "1";
@@ -430,7 +451,7 @@ unlockBtn.addEventListener("click", () => {
     storage.set({ focusCoins: coins, igUnlockUntil: unlockUntil }, () => {
       coinCount.textContent = coins;
       checkUnlockButton();
-      alert("Unlocked 10 minutes of Instagram!");
+      alert("Unlocked distracting sites for 10 minutes!");
     });
   }
 });

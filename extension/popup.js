@@ -14,7 +14,7 @@ document.getElementById('unlockBtn').addEventListener('click', () => {
         focusCoins: coins - 50,
         igUnlockUntil: unlockUntil
       }, () => {
-        alert('Unlocked 10 min! Refresh Instagram');
+        alert('Unlocked distracting sites for 10 min. Refresh the blocked tab.');
         location.reload(); // refresh popup
       });
     } else {
