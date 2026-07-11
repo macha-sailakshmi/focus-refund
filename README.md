@@ -6,6 +6,7 @@ FocusRefund is a productivity experiment that turns distracting site access into
 
 ## Tech Stack
 
+- React 18
 - HTML
 - CSS
 - JavaScript
@@ -22,6 +23,7 @@ FocusRefund is a productivity experiment that turns distracting site access into
 ## Features
 
 - Responsive landing page and dashboard
+- React-powered public landing page
 - Chrome extension popup
 - Multi-site distraction blocker content script
 - Daily age-group locking to reduce task switching
@@ -33,13 +35,17 @@ FocusRefund is a productivity experiment that turns distracting site access into
 ## Project Structure
 
 ```text
-index.html                       Landing page
+index.html                       React-powered landing page
 extension/popup.html             Chrome extension popup
 extension/dashboard/index.html   Focus task dashboard
 extension/content.js             Multi-site distraction blocker
 extension/background.js          Extension background worker
 interceptor/stopscroll.html      Demo explainer page
 ```
+
+## React Note
+
+The public landing page uses React 18 through browser UMD scripts so it can stay deployable as a static Cloudflare Pages site. The Chrome extension popup, content script, dashboard, and background worker remain plain JavaScript because Chrome extension scripts are more reliable when kept simple and build-free.
 
 ## Screenshots
 

@@ -9,24 +9,20 @@
     :root {
       --ink: #f8fafc;
       --muted: #cbd5e1;
-      --blue: #facc15;
-      --blue-dark: #ca8a04;
-      --red: #ef4444;
-      --red-dark: #b91c1c;
       --coin: #facc15;
       --coin-dark: #ca8a04;
+      --red: #ef4444;
       --panel: rgba(15, 23, 42, 0.72);
       --line: rgba(148, 163, 184, 0.24);
-      --font-display: "Cascadia Code", "Roboto Mono", "JetBrains Mono", "Consolas", monospace;
-      --font-body: "Cascadia Code", "Roboto Mono", "JetBrains Mono", "Consolas", monospace;
+      --font: "Cascadia Code", "Roboto Mono", "JetBrains Mono", "Consolas", monospace;
     }
-    body { 
-      font-family: var(--font-body);
+    body {
+      font-family: var(--font);
       background:
         radial-gradient(circle at 18% 16%, rgba(250, 204, 21, 0.18), transparent 30rem),
         radial-gradient(circle at 82% 18%, rgba(202, 138, 4, 0.12), transparent 28rem),
         linear-gradient(135deg, #05070b 0%, #0b0f17 56%, #111827 100%);
-      min-height: 100vh; 
+      min-height: 100vh;
       color: var(--ink);
       padding: 24px;
     }
@@ -46,12 +42,12 @@
       padding: 8px 0;
     }
     nav span:last-child {
-      color: var(--blue);
+      color: var(--coin);
       font-size: 0.9rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    .container { 
+    .container {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(340px, 0.95fr);
       gap: 36px;
@@ -59,7 +55,7 @@
       padding: 34px 0 48px;
     }
     .eyebrow {
-      color: var(--blue);
+      color: var(--coin);
       font-size: 0.8rem;
       font-weight: 900;
       letter-spacing: 0.12em;
@@ -67,14 +63,12 @@
       text-transform: uppercase;
     }
     h1 {
-      color: #111827;
-      font-family: var(--font-display);
+      color: #f8fafc;
       font-size: clamp(2.35rem, 5.5vw, 4.4rem);
       line-height: 1.04;
       margin-bottom: 20px;
       max-width: 720px;
-      font-weight: 800;
-      letter-spacing: -0.015em;
+      font-weight: 900;
     }
     p {
       color: var(--muted);
@@ -115,24 +109,6 @@
       background: var(--red);
       box-shadow: 0 0 22px rgba(239, 68, 68, 0.58);
     }
-    .cards {
-      display: grid;
-      gap: 18px;
-    }
-    .card { 
-      background: var(--panel);
-      backdrop-filter: blur(14px);
-      padding: 26px; 
-      border-radius: 18px; 
-      text-decoration: none; 
-      color: white; 
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-      border: 1px solid var(--line);
-      box-shadow: 0 22px 70px rgba(0,0,0,0.26);
-    }
-    .card:hover { transform: translateY(-5px); border-color: rgba(96, 165, 250, 0.55); background: rgba(15, 23, 42, 0.88); }
-    .card h2 { font-size: 1.55rem; margin-bottom: 10px; }
-    .card span { color: var(--muted); line-height: 1.65; font-size: 0.98rem; }
     .metric-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -178,29 +154,19 @@
       box-shadow: 0 22px 70px rgba(0,0,0,0.32);
       animation: floatIn 700ms ease both;
     }
-    .mini-window {
-      padding: 18px;
-    }
-    .window-top {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
+    .mini-window { padding: 18px; }
+    .window-top { display: flex; gap: 8px; margin-bottom: 18px; }
     .window-top span {
       width: 10px;
       height: 10px;
       border-radius: 999px;
       background: #475569;
     }
-    .preview-title {
-      margin-bottom: 18px;
-    }
+    .preview-title { margin-bottom: 18px; }
     .preview-title h2 {
       color: white;
-      font-family: var(--font-display);
       font-size: 1.35rem;
       margin-bottom: 6px;
-      letter-spacing: -0.02em;
     }
     .preview-title p {
       color: var(--muted);
@@ -218,15 +184,10 @@
       border-radius: 14px;
       background: rgba(255, 255, 255, 0.06);
     }
-    .preview-row strong {
-      display: block;
-      color: white;
-    }
-    .preview-row small {
-      color: var(--muted);
-    }
+    .preview-row strong { display: block; color: white; }
+    .preview-row small { color: var(--muted); }
     .coin-pill {
-      color: white;
+      color: #111827;
       padding: 8px 12px;
       border-radius: 999px;
       background: linear-gradient(135deg, var(--coin), var(--coin-dark));
@@ -239,15 +200,18 @@
       text-align: center;
       animation-delay: 140ms;
     }
-    .lock-window h3 {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-    .lock-window p {
-      margin: 0 0 16px;
-      font-size: 0.96rem;
+    .lock-window h3 { font-size: 1.35rem; margin-bottom: 8px; }
+    .lock-window p { margin: 0 0 16px; font-size: 0.96rem; }
+    .react-badge {
+      display: inline-flex;
+      margin-top: 18px;
+      border: 1px solid rgba(250, 204, 21, 0.35);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: var(--coin);
+      background: rgba(250, 204, 21, 0.08);
+      font-size: 0.8rem;
+      font-weight: 900;
     }
     @keyframes floatIn {
       from { opacity: 0; transform: translateY(16px); }
@@ -264,49 +228,74 @@
   </style>
 </head>
 <body>
-  <div class="page">
-    <nav>
-      <span>FocusRefund</span>
-      <span>Attention Economy</span>
-    </nav>
-    <div class="container">
-      <section>
-        <div class="eyebrow">Spend focus, not willpower</div>
-        <h1>Reclaim your scroll time.</h1>
-        <p>FocusRefund turns distracting sites into a coin economy: complete real tasks, earn Focus Coins, and unlock them only when you choose to spend them.</p>
-        <div class="actions">
-          <a href="extension/dashboard/index.html" class="btn primary">Open The Brain</a>
-          <a href="interceptor/stopscroll.html" class="btn secondary">See The Muscle</a>
-        </div>
-        <div class="hero-note">Built as a Chrome extension plus a web dashboard demo.</div>
-        <div class="metric-row">
-          <div class="metric"><strong>50</strong><span>coins to unlock</span></div>
-          <div class="metric"><strong>10m</strong><span>focused access</span></div>
-          <div class="metric"><strong>5</strong><span>age task lists</span></div>
-        </div>
-      </section>
-      <section class="product-preview" aria-label="FocusRefund product preview">
-        <div class="mini-window">
-          <div class="window-top"><span></span><span></span><span></span></div>
-          <div class="preview-title">
-            <h2>The Brain</h2>
-            <p>Earn coins by finishing tasks that match your age group.</p>
-          </div>
-          <div class="preview-row">
-            <div><strong>Deep work 90min</strong><small>Once today</small></div>
-            <span class="coin-pill">+20</span>
-          </div>
-          <div class="preview-row">
-            <div><strong>Read 20min</strong><small>Repeatable</small></div>
-            <span class="coin-pill">+10</span>
-          </div>
-        </div>
-        <div class="lock-window">
-          <h3>The Muscle</h3>
-          <p>Distracting sites stay locked until Focus Coins are spent.</p>
-        </div>
-      </section>
-    </div>
-  </div>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script>
+    const e = React.createElement;
+
+    const metrics = [
+      ["50", "coins to unlock"],
+      ["10m", "focused access"],
+      ["5", "age task lists"],
+    ];
+
+    const previewTasks = [
+      { name: "Deep work 90min", type: "Once today", coins: "+20" },
+      { name: "Read 20min", type: "Repeatable", coins: "+10" },
+    ];
+
+    function App() {
+      return e("div", { className: "page" },
+        e("nav", null,
+          e("span", null, "FocusRefund"),
+          e("span", null, "React + Extension")
+        ),
+        e("main", { className: "container" },
+          e("section", null,
+            e("div", { className: "eyebrow" }, "Spend focus, not willpower"),
+            e("h1", null, "Reclaim your scroll time."),
+            e("p", null, "FocusRefund turns distracting sites into a coin economy: complete real tasks, earn Focus Coins, and unlock them only when you choose to spend them."),
+            e("div", { className: "actions" },
+              e("a", { href: "extension/dashboard/index.html", className: "btn primary" }, "Open The Brain"),
+              e("a", { href: "interceptor/stopscroll.html", className: "btn secondary" }, "See The Muscle")
+            ),
+            e("div", { className: "hero-note" }, "Built as a React web layer plus a Chrome extension blocker."),
+            e("div", { className: "react-badge" }, "React-powered landing page"),
+            e("div", { className: "metric-row" },
+              metrics.map(([value, label]) =>
+                e("div", { className: "metric", key: label },
+                  e("strong", null, value),
+                  e("span", null, label)
+                )
+              )
+            )
+          ),
+          e("section", { className: "product-preview", "aria-label": "FocusRefund product preview" },
+            e("div", { className: "mini-window" },
+              e("div", { className: "window-top" }, e("span"), e("span"), e("span")),
+              e("div", { className: "preview-title" },
+                e("h2", null, "The Brain"),
+                e("p", null, "Earn coins by finishing tasks that match your age group.")
+              ),
+              previewTasks.map((task) =>
+                e("div", { className: "preview-row", key: task.name },
+                  e("div", null, e("strong", null, task.name), e("small", null, task.type)),
+                  e("span", { className: "coin-pill" }, task.coins)
+                )
+              )
+            ),
+            e("div", { className: "lock-window" },
+              e("h3", null, "The Muscle"),
+              e("p", null, "Distracting sites stay locked until Focus Coins are spent.")
+            )
+          )
+        )
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(e(App));
+  </script>
 </body>
 </html>
